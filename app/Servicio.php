@@ -4,16 +4,18 @@ namespace FotoPrisma;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Producto extends Model
+class Servicio extends Model
 {
-    protected $table='Producto';
+    protected $table='Servicio';
 
-    protected $primaryKey='idProducto';
+    protected $primaryKey='idServicio';
 
     public $timestamps=false;
 
-    protected $fillable =[
+
+	protected $fillable =[
      
+    	'idCategoria',
     	'Nombre',
     	'Descripcion',
     	'Precio',
@@ -26,6 +28,4 @@ class Producto extends Model
 
     
     ];
-
-
 }

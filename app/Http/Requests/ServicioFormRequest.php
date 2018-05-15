@@ -4,7 +4,7 @@ namespace FotoPrisma\Http\Requests;
 
 use FotoPrisma\Http\Requests\Request;
 
-class ProductoFormRequest extends request
+class ServicioFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +25,12 @@ class ProductoFormRequest extends request
     {
         return [
             
+            'idCategoria'=>'required',
             'Nombre'=>'required|max:45',
             'Descripcion'=>'required|max:100',
             'Precio'=>'required|numeric',
             'Imagen'=>'mimes:jpeg,bmp,png', 
-            'Existencias'=>'numeric|max:999'
+            'Existencias'=>'numeric|max:999',                
         ];
     }
 }

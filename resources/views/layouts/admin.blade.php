@@ -29,7 +29,7 @@
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>GS</b>FP</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Gestión de servicios</b></span>
+          <span class="logo-lg"><b>Gestión</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -63,7 +63,7 @@
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Cerrar</a>
+                      <a href="#" class="btn btn-default btn-flat">Cerrar sesión</a>
                     </div>
                   </li>
                 </ul>
@@ -110,23 +110,23 @@
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-shopping-cart"></i>
-                <span>Ventas</span>
+                <span>Solicitudes</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="ventas/venta"><i class="fa fa-circle-o"></i> Ventas</a></li>
-                <li><a href="ventas/cliente"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                <li><a href="ventas/venta"><i class="fa fa-circle-o"></i> Aprobadas</a></li>
+                <li><a href="ventas/cliente"><i class="fa fa-circle-o"></i> Rechazadas</a></li>
               </ul>
             </li>
                        
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-folder"></i> <span>Acceso</span>
+                <i class="fa fa-folder"></i> <span>Usuarios</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                
+                <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i> Administradores</a></li>                
               </ul>
             </li>
              <li>
@@ -162,10 +162,9 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Sistema de servicios</h3>
+                  <h3 class="box-title">Gestión de la empresa</h3>
                   <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>                  
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                   </div>
                 </div>

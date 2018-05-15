@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use FotoPrisma\Http\Requests;
 use FotoPrisma\Servicio; 
-use FotoPrisma\Http\Requests\ProductoFormRequest;
+use FotoPrisma\Http\Requests\ServicioFormRequest;
 
 use DB;
 
-class ProductoController extends Controller
+class ServicioController extends Controller
 {
- 
-  public function __construct()
+
+    public function __construct()
     {
 
     }
@@ -34,15 +34,13 @@ class ProductoController extends Controller
             $query=trim($request->get('searchText'));
             $servicios=DB::table('servicio as serv')
             ->join('Categoria as cat','serv.idCategoria','=','cat.idCategoria')
-            ->select('serv.idServicio','cat.Nombre as Categoria','serv.Nombre','serv.Descripcion','serv.Precio','serv.Imagen', 'serv.Existencias','serv.Estado')
-            ->where('serv.Nombre','LIKE','%'.$query.'%')
+            ->select('serv.idServicio','cat.Nombre as Categoria','serv.Nombre','serv.Descripcion','serv.Precio','serv.Imagen', 'serv.Existencias','serv.Estado')            
             ->where('serv.Estado','<>','Eliminado')
-            ->where('cat.Nombre','=','Producto')            
-            ->orderBy('serv.idServicio','desc')
+            ->orderBy('serv.idServicio','desc')            
             ->paginate(5);
 
 
-            return view('inventario.producto.index',["servicios"=>$servicios,"searchText"=>$query]);
+            return view('inventario.servicio.index',["servicios"=>$servicios,"searchText"=>$query]);
         }
     }
 
@@ -54,7 +52,7 @@ class ProductoController extends Controller
     public function create()
     {
         $categorias=DB::table('categoria')->where('Estado','=','Activo')->get();
-        return view("inventario.producto.create",["categorias"=>$categorias]);
+        return view("inventario.servicio.create",["categorias"=>$categorias]);
     }
 
     /**
@@ -63,15 +61,16 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductoFormRequest $request)
+    public function store(ServicioFormRequest $request)
     {
         $servicio=new Servicio;
 
-        $servicio->idCategoria='2';
+        $servicio->idCategoria=$request->get('idCategoria');
         $servicio->Nombre=$request->get('Nombre');
         $servicio->Descripcion=$request->get('Descripcion');
-        $servicio->Precio=$request->get('Precio');
-        $servicio->Existencias=$request->get('Existencias');                    
+        $servicio->Precio=$request->get('Precio');    
+        $servicio->Existencias=$request->get('Existencias');
+        $servicio->Estado='Activo';
 
         if(Input::hasFile('Imagen')){
 
@@ -81,11 +80,9 @@ class ProductoController extends Controller
             $servicio->Imagen=$file->getClientOriginalName();
         }
 
-        $servicio->Estado='Activo';
-
         $servicio->save();
 
-        return Redirect::to('inventario/producto');
+        return Redirect::to('inventario/servicio');
 
     }
 
@@ -97,7 +94,7 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        return view("inventario.producto.show",["servicio"=>Servicio::findOrFail($id)]);
+        return view("inventario.servicio.show",["servicio"=>Servicio::findOrFail($id)]);
     }
 
     /**
@@ -111,7 +108,7 @@ class ProductoController extends Controller
         $servicio=Servicio::findOrFail($id);
         $categorias=DB::table('categoria')->where('Estado','=','Activo')->get();
 
-        return view("inventario.producto.edit",["servicio"=>$servicio, "categorias"=>$categorias]);
+        return view("inventario.servicio.edit",["servicio"=>$servicio, "categorias"=>$categorias]);
     }
 
     /**
@@ -121,7 +118,7 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductoFormRequest $request, $id)
+    public function update(ServicioFormRequest $request, $id)
     {
         
         $servicio=Servicio::findOrFail($id);
@@ -129,8 +126,9 @@ class ProductoController extends Controller
         $servicio->idCategoria=$request->get('idCategoria');
         $servicio->Nombre=$request->get('Nombre');
         $servicio->Descripcion=$request->get('Descripcion');
-        $servicio->Precio=$request->get('Precio');   
-        $servicio->Existencias=$request->get('Existencias');         
+        $servicio->Precio=$request->get('Precio');    
+        $servicio->Existencias=$request->get('Existencias');
+        $servicio->Estado=$request->get('Estado');
         
         if(Input::hasFile('Imagen')){
 
@@ -139,11 +137,10 @@ class ProductoController extends Controller
 
             $servicio->Imagen=$file->getClientOriginalName();
         }
-        $servicio->Estado=$request->get('Estado');
     
         $servicio->update();
 
-        return Redirect::to('inventario/producto');
+        return Redirect::to('inventario/servicio');
     }
 
     /**
@@ -158,6 +155,15 @@ class ProductoController extends Controller
         $servicio->Estado='Eliminado';
         $servicio->update();
 
-        return Redirect::to('inventario/producto');
+        return Redirect::to('inventario/servicio');
     }
+
+ /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+   
+     
 }

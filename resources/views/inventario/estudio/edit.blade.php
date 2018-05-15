@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Editar producto: {{ $servicio->Nombre}}</h3>
+			<h3>Editar estudio: {{ $servicio->Nombre}}</h3>
 			@if (count($errors)>0)
 			<div class="alert alert-danger">
 				<ul>
@@ -14,7 +14,7 @@
 			@endif
 		</div>
 	</div>	
-	{!! Form::model($servicio,['method'=>'PATCH','route'=>['producto.update',$servicio->idServicio],'files'=>'true'])!!} 
+	{!! Form::model($servicio,['method'=>'PATCH','route'=>['estudio.update',$servicio->idServicio],'files'=>'true'])!!} 
 	{{Form::token()}}
 			<div class="row">	
 		<div class="row">	
@@ -34,25 +34,25 @@
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">		
 			<div class="form-group">
-				<label for="Nombre">Nombre del producto(*)</label>
+				<label for="Nombre">Nombre del servicio</label>
 				<input type="text" name="Nombre" required value="{{$servicio->Nombre}}" class="form-control">
 			</div>		
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label for="Descripcion">Descripcion del producto(*)</label>
+				<label for="Descripcion">Descripcion del servicio</label>
 				<input type="text" name="Descripcion" required value="{{$servicio->Descripcion}}" class="form-control" >
 			</div>	
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label for="Precio">Precio del producto(*)</label>
+				<label for="Precio">Precio del servicio</label>
 				<input type="text" name="Precio" required value="{{$servicio->Precio}}" class="form-control" >
 			</div>	
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label for="Imagen">Cambiar imagen del producto(*)</label>
+				<label for="Imagen">Cambiar imagen del servicio</label>
 				<input type="file" name="Imagen" class="form-control">
 				@if (($servicio->Imagen)!="")
 					<img src="{{asset('Imagenes/Servicios/'.$servicio->Imagen)}}" height="300px" width="300px">
@@ -61,13 +61,7 @@
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label for="Precio">Existencias del producto(*)</label>
-				<input type="text" name="Precio" required value="{{$servicio->Precio}}" class="form-control" >
-			</div>	
-		</div>
-		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-			<div class="form-group">
-			<label for="Estado">Estado del producto</label>
+			<label for="Estado">Estado del servicio</label>
 				<select name="Estado" class="form-control">
 				 @if($servicio->Estado='Activo')
 				 <option value="Activo" selected>Activo</option>
