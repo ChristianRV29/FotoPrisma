@@ -14,11 +14,11 @@ class Solicitud extends Model
 
 
 	protected $fillable =[
-     
-    	'idSolicitud',
-    	'idUsuario',
-    	'Fecha_Solicitud',
-    	'Impuesto',
+         	
+    	'idUsuario',        
+    	'Fecha_Solicitud', 
+        'Fecha_Efectiva',
+    	'Impuesto',        
     	'Total',
     	'Estado'
     ];

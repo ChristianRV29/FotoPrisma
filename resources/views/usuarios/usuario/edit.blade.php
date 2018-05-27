@@ -28,13 +28,7 @@
 				<label for="Nombre">Nombre</label>
 				<input type="text" name="Nombre" required value="{{$usuario->Nombre}}" class="form-control" >
 			</div>	
-		</div>
-		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-			<div class="form-group">
-				<label for="Fecha_Nacimiento">Fecha de nacimiento</label>
-				<input type="text" name="Fecha_Nacimiento" required value="{{$usuario->Fecha_Nacimiento}}" class="form-control" >
-			</div>	
-		</div>
+		</div>		
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
 				<label for="Ciudad">Ciudad de residencia</label>
@@ -47,6 +41,32 @@
 				<input type="text" name="Correo" required value="{{$usuario->Correo}}" class="form-control" >
 			</div>	
 		</div>
+		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">		
+			<div class="form-group">
+				<label for="Clave">Contraseña(*)</label>
+				<input type="password" name="Clave" required value="{{$usuario->Clave}}" class="form-control" id="pass">
+				<input type="checkbox" onclick="myFunction()">Mostrar contraseña
+			</div>		
+		</div>
+
+		<script type="text/javascript">
+			
+			function myFunction(){
+
+				var x = document.getElementById("pass");
+
+				if(x.type === "password"){
+
+					x.type = "text";
+				
+				}else{
+
+					x.type = "password";
+
+				}
+			}
+
+		</script>
 			<div class="form-group">
 				<button class="btn btn-primary" type="submit">Guardar</button>
 				<button class="btn btn-primary" type="reset">Cancelar</button>

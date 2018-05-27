@@ -8,16 +8,17 @@ use Illuminate\Support\Facades\Redirect;
 use FotoPrisma\Http\Requests;
 use FotoPrisma\Usuario; 
 use FotoPrisma\Http\Requests\UsuarioFormRequest;
+use FotoPrisma\User;
 
 use DB;
 
 class UsuarioController extends Controller
 {
     
-    public function __construct()
+     /*public function __construct()
     {
-
-    }
+        //$this->middleware('auth');
+    }*/
 
 
 	 public function index(Request $request)
@@ -63,6 +64,13 @@ class UsuarioController extends Controller
     public function store(UsuarioFormRequest $request)
     {
         $usuario=new Usuario;
+
+        $authUser = new User();
+        $authUser->name = $request->get('Nombre');
+        $authUser->email = $request->get('Correo');
+        $authUser->password = bcrypt($request->get('Clave'));
+
+        $authUser->save();
         
         $usuario->idRol=$request->get('idRol');
         $usuario->Tipo_Documento=$request->get('Tipo_Documento');
@@ -70,9 +78,9 @@ class UsuarioController extends Controller
         $usuario->Nombre=$request->get('Nombre');        
         $usuario->Ciudad=$request->get('Ciudad');
         $usuario->Telefono=$request->get('Telefono');
-        $usuario->Correo=$request->get('Correo');
-        $usuario->Clave=$request->get('Clave');
-
+        //$usuario->Correo=$request->get('Correo');
+        //$usuario->Clave=$request->get('Clave');
+        $usuario->user_id = $authUser->id;
         $usuario->Estado='Activo';
         
         $usuario->save();

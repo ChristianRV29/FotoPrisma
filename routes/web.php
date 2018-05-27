@@ -12,15 +12,52 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
-Route::resource('inventario/categoria','CategoriaController');
+/*Definicion de rutas que no requieren autenticacion de usuario*/
+Route::group(['middleware' => 'web'], function () {
+	Auth::routes();
+	Route::get('/', function () {
+		return redirect()->guest('login');
+	});
+});
+
+/*Route::resource('inventario/categoria','CategoriaController');
 Route::resource('inventario/servicio','ServicioController');
 Route::resource('inventario/estudio','EstudioController');
 Route::resource('inventario/producto','ProductoController');
 
 Route::resource('usuarios/rol','RolController');
 Route::resource('usuarios/cliente','ClienteController');
-Route::resource('usuarios/administrador','AdministradorController');
-Route::resource('usuarios/usuario','UsuarioController');
+//Route::resource('usuarios/administrador','AdministradorController');
+Route::resource('usuarios/usuario','UsuarioController');*/
+
+//Route::resource('solicitudes/solicitud','SolicitudController');
+
+
+//Route::auth();
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+/*Rutas con middlewares de autenticacion*/
+Route::group(['prefix' => 'admin',
+ 	'middleware' => ['web', 'auth', 'admin']], function () {
+	Route::get('/', [
+		'uses' => 'AdministradorController@index',
+		'as' => 'admin.administrador'
+	]);
+	Route::get('categoria/agregar','CategoriaController@create');
+	Route::resource('administrador','AdministradorController');
+	Route::resource('categoria','CategoriaController');
+});
+
+Route::group(['prefix' => 'cliente', 
+	'middleware' => ['web', 'auth', 'cliente']], function () {
+	Route::get('/', [
+		'uses' => 'SolicitudController@index',
+		'as' => 'cliente.solicitud'
+	]);
+	Route::resource('solicitud','SolicitudController');
+});

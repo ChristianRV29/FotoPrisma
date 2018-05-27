@@ -11,6 +11,8 @@ class Rol extends Model
 
 	protected $primaryKey='idRol';
 
+	public $timestamps=false;
+
 	protected $fillable =[
      
     	'Nombre'

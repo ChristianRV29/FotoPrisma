@@ -3,6 +3,7 @@
 namespace FotoPrisma;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Usuario extends Model
 {
@@ -21,13 +22,20 @@ class Usuario extends Model
         'Documento',
     	'Nombre',    	    	
     	'Ciudad',
-    	'Correo',   
+    	'Correo',
+        'Clave',   
         'Telefono',     
-        'Estado'       
+        'Estado',
+        'user_id'
     ];
 
     protected $guarded =[
 
     
     ];
+
+    public function userAuth() {
+        return $this->belongsTo('FotoPrisma\User', 'user_id');
+    }
+
 }

@@ -59,5 +59,8 @@ class Kernel extends HttpKernel
         'guest' => \FotoPrisma\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+
+        'admin' => \FotoPrisma\Http\Middleware\Admin::class,
+        'cliente' => \FotoPrisma\Http\Middleware\Cliente::class,
     ];
 }

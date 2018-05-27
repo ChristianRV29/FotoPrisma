@@ -15,7 +15,7 @@ class Detalle extends Model
 
 
 	protected $fillable =[
-     	'idDetalle',
+         
      	'idSolicitud',
      	'idServicio',
      	'Cantidad'
