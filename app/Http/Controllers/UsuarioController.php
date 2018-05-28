@@ -64,8 +64,8 @@ class UsuarioController extends Controller
     public function store(UsuarioFormRequest $request)
     {
         $usuario=new Usuario;
-
         $authUser = new User();
+
         $authUser->name = $request->get('Nombre');
         $authUser->email = $request->get('Correo');
         $authUser->password = bcrypt($request->get('Clave'));
@@ -78,15 +78,15 @@ class UsuarioController extends Controller
         $usuario->Nombre=$request->get('Nombre');        
         $usuario->Ciudad=$request->get('Ciudad');
         $usuario->Telefono=$request->get('Telefono');
-        //$usuario->Correo=$request->get('Correo');
-        //$usuario->Clave=$request->get('Clave');
+        $usuario->Correo=$request->get('Correo');
+        $usuario->Clave= bcrypt($request->get('Clave'));
         $usuario->user_id = $authUser->id;
         $usuario->Estado='Activo';
         
         $usuario->save();
 
 
-        return Redirect::to('usuarios/usuario');
+        return Redirect::to('admin/usuarios/usuario');
 
     }
 
@@ -110,7 +110,7 @@ class UsuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {        
 
     	return view("usuarios.usuario.edit",["usuario"=>Usuario::findOrFail($id)]);
 
@@ -128,19 +128,25 @@ class UsuarioController extends Controller
     {
         
     	$usuario=Usuario::findOrFail($id);
+        $authUser=User::findOrFail($id);
 
-        $usuarios->Tipo_Documento=$request->get('Tipo_Documento');    
+        $authUser->name = $request->get('Nombre');
+        //$authUser->email = $request->get('Correo');
+        $authUser->password = bcrypt($request->get('Clave'));
+        $authUser->update();
+
+        $usuario->Tipo_Documento=$request->get('Tipo_Documento');    
     	$usuario->Documento=$request->get('Documento');
         $usuario->Nombre=$request->get('Nombre');        
         $usuario->Ciudad=$request->get('Ciudad');
         $usuario->Telefono=$request->get('Telefono');
-        $usuario->Correo=$request->get('Correo');
-        $usuario->Clave=$request->get('Clave');
+        //$usuario->Correo=$request->get('Correo');
+        $usuario->Clave = bcrypt($request->get('Clave'));
         $usuario->Estado=$request->get('Estado');
 
         $usuario->update();
 
-        return Redirect::to('usuarios/usuario');
+        return Redirect::to('admin/usuarios/usuario');
 
       
     }
@@ -158,7 +164,7 @@ class UsuarioController extends Controller
 
      	$usuario->update();
 
-     	return Redirect::to('usuarios.usuario');
+     	return Redirect::to('admin/usuarios/usuario');
 
     }
 }

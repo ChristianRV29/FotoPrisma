@@ -24,6 +24,7 @@
 				<select name="Tipo_Documento" class="form-control">
 					<option value="CC">Cédula de ciudadanía</option>
 					<option value="CE">Cédula de extranjería</option>
+					<option value="TI">Tarjeta de identidad</option>
 				</select>				
 			</div>		
 		</div>		
@@ -44,17 +45,17 @@
 				<label for="Ciudad">Ciudad de residencia(*)</label>
 				<input type="text" name="Ciudad" required value="{{old('Ciudad')}}" class="form-control"  placeholder="Ciudad...">
 			</div>		
+		</div>		
+		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">		
+			<div class="form-group">
+				<label for="Telefono">Telefono celular(*)</label>
+				<input type="text" name="Telefono" required value="{{old('Telefono')}}" class="form-control"  placeholder="Telefono...">
+			</div>		
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">		
 			<div class="form-group">
 				<label for="Correo">Correo electronico(*)</label>
 				<input type="text" name="Correo" required value="{{old('Correo')}}" class="form-control"  placeholder="Correo...">
-			</div>		
-		</div>
-		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">		
-			<div class="form-group">
-				<label for="Telefono">Telefono celular(*)</label>
-				<input type="text" name="Telefono" required value="{{old('Telefono')}}" class="form-control"  placeholder="Telefono...">
 			</div>		
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">		

@@ -48,9 +48,16 @@ Route::group(['prefix' => 'admin',
 		'uses' => 'AdministradorController@index',
 		'as' => 'admin.administrador'
 	]);
-	Route::get('categoria/agregar','CategoriaController@create');
-	Route::resource('administrador','AdministradorController');
-	Route::resource('categoria','CategoriaController');
+	//Route::get('categoria/agregar','CategoriaController@create');
+	Route::resource('inventario/categoria','CategoriaController');
+	Route::resource('inventario/servicio','ServicioController');
+	Route::resource('inventario/estudio','EstudioController');
+	Route::resource('inventario/producto','ProductoController');
+	Route::resource('usuarios/rol','RolController');
+	Route::resource('usuarios/usuario','UsuarioController');
+	Route::resource('usuarios/administrador','AdministradorController');
+	Route::resource('usuarios/cliente','ClienteController');
+		
 });
 
 Route::group(['prefix' => 'cliente', 

@@ -17,10 +17,11 @@
 						<th>Nombre</th>																
 						<th>Ciudad</th>
 						<th>Telefono</th>
-						<th>Correo</th>						
+						<th>Correo</th>
+						<th>Estado</th>						
 						<th>Opciones</th>
 					</thread> 
-					@foreach($usuarios as $us)
+					@foreach($usuarios as $us)					
 					<tr>
 						<td>{{$us->Documento}}</td>
 						<td>{{$us->Tipo_Documento}}</td>
@@ -29,6 +30,7 @@
 						<td>{{$us->Ciudad}}</td>
 						<td>{{$us->Telefono}}</td>
 						<td>{{$us->Correo}}</td>												
+						<td>{{$us->Estado}}</td>
 						<td>
 							<a href="{{URL::action('UsuarioController@edit',$us->Documento)}}"><button class="btn btn-info">Editar</button></a>						
 							<a href="" data-target="#modal-delete-{{$us->Documento}}" data-toggle="modal"><button class="btn btn-danger">Deshabilitar</button></a>

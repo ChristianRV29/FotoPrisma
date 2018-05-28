@@ -65,6 +65,13 @@ class AdministradorController extends Controller
     public function store(UsuarioFormRequest $request)
     {
         $usuario=new Usuario;
+        $authUser = new User();
+
+        $authUser->name = $request->get('Nombre');
+        $authUser->email = $request->get('Correo');
+        $authUser->password = bcrypt($request->get('Clave'));
+
+        $authUser->save();
             
 
         $usuario->idRol='1';
@@ -74,14 +81,14 @@ class AdministradorController extends Controller
         $usuario->Ciudad=$request->get('Ciudad');
         $usuario->Telefono=$request->get('Telefono');    
         $usuario->Correo=$request->get('Correo');
-        $usuario->Clave=$request->get('Clave');
+        $usuario->Clave = bcrypt($request->get('Clave'));
 
         $usuario->Estado='Activo';
 
         $usuario->save();
 
 
-        return Redirect::to('usuarios/administrador');
+        return Redirect::to('admin/usuarios/administrador');
 
     }
 
@@ -123,6 +130,10 @@ class AdministradorController extends Controller
     {
         
     	$usuario=Usuario::findOrFail($id);
+        $authUser->name = $request->get('Nombre');
+        //$authUser->email = $request->get('Correo');
+        $authUser->password = bcrypt($request->get('Clave'));
+
 
     	$usuario->idRol=$request->get('idRol');
         $usuarios->Tipo_Documento=$request->get('Tipo_Documento');    
@@ -130,13 +141,13 @@ class AdministradorController extends Controller
         $usuario->Nombre=$request->get('Nombre');        
         $usuario->Ciudad=$request->get('Ciudad');
         $usuario->Telefono=$request->get('Telefono');
-        $usuario->Correo=$request->get('Correo');
-        $usuario->Clave=$request->get('Clave');
+        //$usuario->Correo=$request->get('Correo');
+        $usuario->Clave= bcrypt($request->get('Clave'));
         $usuario->Estado=$request->get('Estado');
 
         $usuario->update();
 
-        return Redirect::to('usuarios/administrador');
+        return Redirect::to('admin/usuarios/administrador');
 
       
     }

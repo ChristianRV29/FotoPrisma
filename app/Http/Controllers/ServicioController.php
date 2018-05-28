@@ -82,7 +82,7 @@ class ServicioController extends Controller
 
         $servicio->save();
 
-        return Redirect::to('inventario/servicio');
+        return Redirect::to('admin/inventario/servicio');
 
     }
 
@@ -140,7 +140,7 @@ class ServicioController extends Controller
     
         $servicio->update();
 
-        return Redirect::to('inventario/servicio');
+        return Redirect::to('admin/inventario/servicio');
     }
 
     /**
@@ -155,7 +155,7 @@ class ServicioController extends Controller
         $servicio->Estado='Eliminado';
         $servicio->update();
 
-        return Redirect::to('inventario/servicio');
+        return Redirect::to('admin/inventario/servicio');
     }
 
  /**

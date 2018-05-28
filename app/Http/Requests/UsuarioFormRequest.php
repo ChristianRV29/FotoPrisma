@@ -26,12 +26,12 @@ class UsuarioFormRequest extends Request
         return [
                          
             'Tipo_Documento'=>'required|max:45',           
-            'Documento'=>'required|unique:usuario|min:8|numeric',            
+            'Documento'=>'required|min:8|numeric',            
             'Nombre'=>'required|max:60',                        
             'Ciudad'=>'required|max:45',
+            'Telefono'=>'required|min:10|numeric', 
             'Correo'=>'required|max:45',
-            'Clave'=>'required|min:8',
-            'Telefono'=>'required|min:10|numeric',            
+            'Clave'=>'required|min:8'                       
 
         ];
     }

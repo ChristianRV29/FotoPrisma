@@ -15,7 +15,7 @@
 		</div>
 	</div>
 	
-	{!!Form::open(array('url'=>'usuarios/usuario','method'=>'POST','autocomplete'=>'off'))!!} 
+	{!!Form::open(array('url'=>'admin/usuarios/usuario','method'=>'POST','autocomplete'=>'off'))!!} 
 	{{Form::token()}}	
 	<div class="row">
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
@@ -34,6 +34,7 @@
 				<select name="Tipo_Documento" class="form-control">
 					<option value="CC">Cédula de ciudadanía</option>
 					<option value="CE">Cédula de extranjería</option>
+					<option value="TI">Tarjeta de identidad</option>
 				</select>				
 			</div>		
 		</div>		
@@ -57,14 +58,15 @@
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">		
 			<div class="form-group">
-				<label for="Correo">Correo electronico(*)</label>
-				<input type="text" name="Correo" required value="{{old('Correo')}}" class="form-control"  placeholder="Correo...">
-			</div>		
-		</div>
-		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">		
-			<div class="form-group">
 				<label for="Telefono">Telefono celular(*)</label>
 				<input type="text" name="Telefono" required value="{{old('Telefono')}}" class="form-control"  placeholder="Telefono...">
+			</div>		
+		</div>
+
+		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">		
+			<div class="form-group">
+				<label for="Correo">Correo electronico(*)</label>
+				<input type="text" name="Correo" required value="{{old('Correo')}}" class="form-control"  placeholder="Correo...">
 			</div>		
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">		
@@ -73,8 +75,7 @@
 				<input type="password" name="Clave" required value="{{old('Clave')}}" class="form-control"  placeholder="Contraseña..." id="pass">
 				<input type="checkbox" onclick="myFunction()">Mostrar contraseña
 			</div>		
-		</div>
-
+		</div>	
 		<script type="text/javascript">
 			
 			function myFunction(){

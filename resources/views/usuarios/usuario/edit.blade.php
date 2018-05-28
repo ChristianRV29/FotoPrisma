@@ -14,25 +14,41 @@
 			@endif
 		</div>
 	</div>	
-			{!! Form::model($usuario,['method'=>'PATCH','route'=>['usuario.update',$usuario->idUsuario]])!!} 
+			{!! Form::model($usuario,['method'=>'PATCH','route'=>['usuario.update',$usuario->Documento]])!!} 
 			{{Form::token()}}
 		<div class="row">			
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">		
 			<div class="form-group">
-				<label for="Documento">Documento</label>
-				<input type="text" name="Documento" required value="{{$usuario->Documento}}" class="form-control">
+				<label for="Tipo_Documento">Tipo de documento</label>
+				<select name="Tipo_Documento" class="form-control">
+					<option value="CC">Cédula de ciudadanía</option>
+					<option value="CE">Cédula de extranjería</option>
+					<option value="TI">Tarjeta de identidad</option>
+				</select>				
+			</div>		
+		</div>		
+		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">		
+			<div class="form-group">
+				<label for="Documento">Documento(*)</label>
+				<input type="text" name="Documento" required value="{{$usuario->Documento}}" class="form-control"  placeholder="Numero de documento...">
 			</div>		
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label for="Nombre">Nombre</label>
+				<label for="Nombre">Nombre y apellido(*)</label>
 				<input type="text" name="Nombre" required value="{{$usuario->Nombre}}" class="form-control" >
 			</div>	
 		</div>		
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label for="Ciudad">Ciudad de residencia</label>
+				<label for="Ciudad">Ciudad de residencia(*)</label>
 				<input type="text" name="Ciudad" required value="{{$usuario->Ciudad}}" class="form-control" >
+			</div>	
+		</div>
+		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+			<div class="form-group">
+				<label for="Telefono">Telefono celular</label>
+				<input type="text" name="Telefono" required value="{{$usuario->Telefono}}" class="form-control" >
 			</div>	
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
@@ -40,7 +56,7 @@
 				<label for="Correo">Correo electronico</label>
 				<input type="text" name="Correo" required value="{{$usuario->Correo}}" class="form-control" >
 			</div>	
-		</div>
+		</div>		
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">		
 			<div class="form-group">
 				<label for="Clave">Contraseña(*)</label>
@@ -48,6 +64,15 @@
 				<input type="checkbox" onclick="myFunction()">Mostrar contraseña
 			</div>		
 		</div>
+		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">		
+			<div class="form-group">
+				<label for="Estado">Estado del usuario</label>
+				<select name="Estado" class="form-control">
+					<option value="Activo">Activo</option>
+					<option value="Inactivo">Inactivo</option>					
+				</select>				
+			</div>		
+		</div>		
 
 		<script type="text/javascript">
 			
